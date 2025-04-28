@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 
-// 
+
 namespace Yahtzee
 {
     public partial class Game : Form
@@ -22,6 +22,7 @@ namespace Yahtzee
         bool[] retenido = new bool[5];
         int jugadorActual = 1; // Comenzamos con Player 1
         int lanzamientosRestantes = 3; // Cada jugador tiene 3 lanzamientos por turno
+        int[] valorDados = new int[5];
 
 
 
@@ -53,12 +54,12 @@ namespace Yahtzee
                     Image imagenOriginal = Image.FromFile(rutasDados[i]);
                     Image imagenReducida = new Bitmap(imagenOriginal, new Size(30, 30));
                     labelsDados[i].Image = imagenReducida;
-                    labelsDados[i].ImageAlign = ContentAlignment.MiddleLeft; 
-                    labelsDados[i].TextAlign = ContentAlignment.MiddleRight; 
+                    labelsDados[i].ImageAlign = ContentAlignment.MiddleLeft;
+                    labelsDados[i].TextAlign = ContentAlignment.MiddleRight;
                 }
                 catch (Exception ex)
                 {
-                   
+
                     MessageBox.Show($"Error al cargar la imagen para lbl_img{i + 1}: {ex.Message}");
                 }
             }
@@ -72,10 +73,10 @@ namespace Yahtzee
                 Random aleatorio = new Random();
                 int[] valoresDados = new int[5]; // Array para guardar los valores de los dados
 
-                // Asignar una imagen aleatoria a cada PictureBox que no estÃ© retenido
+                // Asignar una imagen aleatoria a cada PictureBox que no esté retenido
                 for (int i = 0; i < 5; i++)
                 {
-                    if (!retenido[i]) // Solo girar los dados que no estÃ¡n retenidos
+                    if (!retenido[i]) // Solo girar los dados que no están retenidos
                     {
                         valoresDados[i] = aleatorio.Next(1, 7); // Generar valor entre 1 y 6
 
@@ -109,15 +110,17 @@ namespace Yahtzee
                     }
                 }
 
-                lanzamientosRestantes--; // Reducir el nÃºmero de lanzamientos restantes
+                lanzamientosRestantes--; // Reducir el número de lanzamientos restantes
 
-                // Llamar al mÃ©todo `Numeros` para calcular y actualizar los labels del jugador con las jugadas posibles
+                // Llamar al método `Numeros` para calcular y actualizar los labels del jugador con las jugadas posibles
                 Numeros(valoresDados);
+                Numeros(valorDados);
+                
 
                 // Verificar si ya no quedan lanzamientos
                 if (lanzamientosRestantes == 0)
                 {
-                    MessageBox.Show($"Turno terminado para Jugador {jugadorActual}. Â¡Selecciona tu jugada!");
+                    MessageBox.Show($"Turno terminado para Jugador {jugadorActual}. ¡Selecciona tu jugada!");
                     HabilitarJugada(jugadorActual); // Habilitar las jugadas para el jugador actual
                 }
             }
@@ -125,20 +128,21 @@ namespace Yahtzee
             {
                 MessageBox.Show("Debes seleccionar una jugada antes de pasar al siguiente turno.");
             }
+            MessageBox.Show($"el valor de los dados es: {valorDados[0]}");
         }
 
         private void ToggleRetenido(object sender, EventArgs e)
         {
-            // Obtener el PictureBox que activÃ³ el evento
+            // Obtener el PictureBox que activó el evento
             PictureBox pictureBox = sender as PictureBox;
 
             if (pictureBox != null)
             {
-                // Intentar obtener el nÃºmero del dado desde el nombre del PictureBox
+                // Intentar obtener el número del dado desde el nombre del PictureBox
                 int indice;
                 if (int.TryParse(pictureBox.Name.Replace("picture_d", ""), out indice))
                 {
-                    // Ajustar el Ã­ndice para que sea correcto dentro del arreglo (de 1 basado en nombre a 0 basado en Ã­ndice)
+                    // Ajustar el índice para que sea correcto dentro del arreglo (de 1 basado en nombre a 0 basado en índice)
                     indice -= 1;
 
                     // Alternar el estado retenido
@@ -153,7 +157,7 @@ namespace Yahtzee
                     }
                     else
                     {
-                        pictureBox.Location = new Point(pictureBox.Location.X, 245); // Devuelve el dado a la posiciÃ³n original
+                        pictureBox.Location = new Point(pictureBox.Location.X, 245); // Devuelve el dado a la posición original
                     }
                 }
             }
@@ -168,12 +172,12 @@ namespace Yahtzee
                 labelSeleccionado.Enabled = false; // Deshabilitar jugada seleccionada
                 MessageBox.Show($"Jugador {jugadorActual} ha seleccionado la jugada: {labelSeleccionado.Text}");
 
-                // Pasar automÃ¡ticamente al siguiente jugador
+                // Pasar automáticamente al siguiente jugador
                 jugadorActual = jugadorActual == 1 ? 2 : 1;
                 lanzamientosRestantes = 3; // Reiniciar lanzamientos
 
                 HabilitarJugada(jugadorActual); // Habilitar las jugadas para el siguiente jugador
-                MessageBox.Show($"Es el turno del Jugador {jugadorActual}. Â¡A lanzar!");
+                MessageBox.Show($"Es el turno del Jugador {jugadorActual}. ¡A lanzar!");
             }
         }
 
@@ -214,7 +218,7 @@ namespace Yahtzee
         //JUGADAS
         public void Numeros(int[] dados)
         {
-            int[] conteoDados = new int[6]; // Contador para cada nÃºmero del 1 al 6
+            int[] conteoDados = new int[6]; // Contador para cada número del 1 al 6
 
             foreach (int valor in dados)
             {
@@ -256,6 +260,36 @@ namespace Yahtzee
                 lbl_j2_5.Visible = conteoDados[4] > 0;
                 lbl_j2_6.Visible = conteoDados[5] > 0;
             }
+        }
+
+        private void lbl_j1_1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_j1_2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_j1_3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_j1_4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_j1_5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_j1_6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
