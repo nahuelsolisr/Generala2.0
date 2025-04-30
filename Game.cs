@@ -17,12 +17,14 @@ namespace Yahtzee
         {
             InitializeComponent();
         }
-
+         // VARIABLES GLOBALES
+ 
         string[] rutasDados = { "cara1.png", "cara2.png", "cara3.png", "cara4.png", "cara5.png", "cara6.png" };
         bool[] retenido = new bool[5];
         int jugadorActual = 1; // Comenzamos con Player 1
         int lanzamientosRestantes = 3; // Cada jugador tiene 3 lanzamientos por turno
         int[] valorDados = new int[5]; // valor de dado para agregarlo al form
+       
 
 
 
