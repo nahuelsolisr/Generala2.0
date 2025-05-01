@@ -29,7 +29,7 @@ namespace Yahtzee
        
 
 
-
+      //
         private void Form1_Load(object sender, EventArgs e)
         {
             lbl_j1_1.Click += JugadaSeleccionada;
