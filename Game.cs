@@ -14,8 +14,7 @@ namespace Yahtzee
     public partial class Game : Form
     {
 //
-//
-//
+
 
 
 
