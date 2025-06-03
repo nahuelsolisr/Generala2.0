@@ -18,7 +18,7 @@ namespace Yahtzee
         {
             InitializeComponent();
         }
-         // VARIABLES GLOBALES
+
 
          int variablG=0;
  
