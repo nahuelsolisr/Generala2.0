@@ -19,6 +19,7 @@ namespace Yahtzee
             InitializeComponent();
         }
  //
+    //
 
          int variablG=0;
  
