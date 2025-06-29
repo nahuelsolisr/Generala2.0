@@ -20,9 +20,6 @@ namespace Yahtzee
         }
 
     //
-    //
-
-    //
 
          int variablG=0;
  
