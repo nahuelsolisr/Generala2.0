@@ -23,6 +23,7 @@ namespace Yahtzee
 
          int variablG=0;
         //
+    //
  
         string[] rutasDados = { "cara1.png", "cara2.png", "cara3.png", "cara4.png", "cara5.png", "cara6.png" };
      
