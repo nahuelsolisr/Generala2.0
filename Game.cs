@@ -33,7 +33,7 @@ namespace Yahtzee
         int lanzamientosRestantes = 3; // Cada jugador tiene 3 lanzamientos por turno
         int[] valorDados = new int[5]; // valor de dado para agregarlo al form
        
-
+//
 
       //
         private void Form1_Load(object sender, EventArgs e)
