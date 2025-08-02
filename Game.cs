@@ -23,7 +23,6 @@ namespace Yahtzee
     
 
          int variablG=0;
-    //
 
 
     
@@ -305,6 +304,7 @@ namespace Yahtzee
         }
     }
 }
+
 
 
 
